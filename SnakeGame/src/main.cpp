@@ -5,9 +5,12 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <memory>
 
 #include "utility/utility.h"
 #include "shader/ShaderProgram.h"
+#include "drawing/VertexBuffer.h"
+#include "drawing/VertexArrayBuffer.h"
 
 
 
@@ -20,7 +23,7 @@ int main(void)
         return -1;
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+    window = glfwCreateWindow(960, 720, "Hello World", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -40,27 +43,40 @@ int main(void)
     glGenVertexArrays(1, &vertexArrayId);
     glBindVertexArray(vertexArrayId);
 
-    static const GLfloat g_vertex_buffer_data[] = {
-         0.5f,  0.5f, 0.0f,
-         0.5f, -0.5f, 0.0f,
-        -0.5f, -0.5f, 0.0f,
-        -0.5f,  0.5f, 0.0f
+    // static GLfloat g_vertex_buffer_data[] = {
+    //      0.4f,  0.5f, 0.0f,
+    //      0.5f, -0.5f, 0.0f,
+    //     -0.5f, -0.5f, 0.0f,
+    //     -0.5f,  0.5f, 0.0f
+    // };
+
+    static GLfloat g_vertex_buffer_data[] {
+        -0.9f, 0.9f, 0.0f,
+        -0.8f, 0.9f, 0.0f,
+        -0.9f, 0.8f, 0.0f,
+        -0.8f, 0.8f, 0.0f,
+
+         0.3f, 0.9f, 0.0f,
+         0.4f, 0.9f, 0.0f,
+         0.3f, 0.8f, 0.0f,
+         0.4f, 0.8f, 0.0f,
     };
+
+    // unsigned int indices[] = {
+    //     0, 1, 3,
+    //     1, 2, 3
+    // };
 
     unsigned int indices[] = {
-        0, 1, 3,
-        1, 2, 3
+        0, 1, 2,
+        1, 2, 3,
+
+        4, 5, 6,
+        5, 6, 7
     };
 
-    GLuint vertexBuffer;
-    glGenBuffers(1, &vertexBuffer);
-    glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
-    
-    GLuint vertexArrayBuffer;
-    glGenBuffers(1, &vertexArrayBuffer);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vertexArrayBuffer);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+    VertexBuffer vertexBuffer(g_vertex_buffer_data, sizeof(g_vertex_buffer_data));
+    VertexArrayBuffer vertexArrayBuffer(indices, sizeof(indices));
 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void*)0);
     glEnableVertexAttribArray(0);
@@ -84,7 +100,8 @@ int main(void)
 
 
         glEnableVertexAttribArray(0);
-        glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+        //glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+        vertexBuffer.bind();
         glVertexAttribPointer(
             0,
             3,
@@ -96,7 +113,7 @@ int main(void)
 
         program.Bind();
 
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        glDrawElements(GL_TRIANGLES, 12, GL_UNSIGNED_INT, 0);
         glDisableVertexAttribArray(0);
 
         /* Swap front and back buffers */
