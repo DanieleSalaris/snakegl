@@ -110,10 +110,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLEW\include;$(SolutionDir)Dependencies\GLFW\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\GLEW\lib\Release\x64;$(SolutionDir)Dependencies\GLFW\lib-vc2022</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;OpenGL32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -130,18 +133,36 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\GLEW\lib\Release\x64;$(SolutionDir)Dependencies\GLFW\lib-vc2022</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;OpenGL32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\snake\Random.cpp" />
+    <ClCompile Include="src\snake\Board.cpp" />
+    <ClCompile Include="src\snake\Position.cpp" />
+    <ClCompile Include="src\snake\Snake.cpp" />
+    <ClCompile Include="src\snake\Entity.cpp" />
     <ClCompile Include="src\shader\ShaderProgram.cpp" />
     <ClCompile Include="src\shader\Shader.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\utility\utility.cpp" />
+    <ClCompile Include="src\drawing\VertexDrawer.cpp" />
+    <ClCompile Include="src\drawing\VertexBuffer.cpp" />
+    <ClCompile Include="src\drawing\VertexArrayBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\snake\Random.h" />
+    <ClInclude Include="src\snake\Board.h" />
+    <ClInclude Include="src\snake\Position.h" />
+    <ClInclude Include="src\snake\Snake.h" />
+    <ClInclude Include="src\snake\Entity.h" />
     <ClInclude Include="src\shader\ShaderProgram.h" />
     <ClInclude Include="src\shader\Shader.h" />
     <ClInclude Include="src\utility\utility.h" />
+    <ClInclude Include="src\drawing\VertexDrawer.h" />
+    <ClInclude Include="src\drawing\VertexBuffer.h" />
+    <ClInclude Include="src\drawing\VertexArrayBuffer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
