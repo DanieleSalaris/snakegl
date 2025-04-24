@@ -1,14 +1,16 @@
 #pragma once
 #include <GL/glew.h>
+#include "../utility/Array.h"
 class VertexArrayBuffer
 {
 private:
 	GLuint id;
 	unsigned int length;
 public:
-	VertexArrayBuffer(GLuint* data, unsigned int size);
+	VertexArrayBuffer();
+	VertexArrayBuffer(Array<GLuint>& data);
 	~VertexArrayBuffer();
-	void setData(GLuint* data, unsigned int size);
+	void setData(Array<GLuint>& data);
 	void bind();
 	void unbind();
 	inline unsigned int getLength() { return length; }

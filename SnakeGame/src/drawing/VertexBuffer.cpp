@@ -1,10 +1,13 @@
 #include "VertexBuffer.h"
 #include "../utility/utility.h"
 
-VertexBuffer::VertexBuffer(GLfloat* data, unsigned int size)
+VertexBuffer::VertexBuffer()
 {
 	GLCall(glGenBuffers(1, &id));
-	setData(data, size);
+}
+VertexBuffer::VertexBuffer(Array<GLfloat>& data): VertexBuffer()
+{
+	setData(data);
 }
 
 VertexBuffer::~VertexBuffer()
@@ -12,10 +15,10 @@ VertexBuffer::~VertexBuffer()
 	GLCall(glDeleteBuffers(1, &id));
 }
 
-void VertexBuffer::setData(GLfloat* data, unsigned int size)
+void VertexBuffer::setData(Array<GLfloat>& data)
 {
 	bind();
-	GLCall(glBufferData(GL_ARRAY_BUFFER, size, data, GL_STATIC_DRAW));
+	GLCall(glBufferData(GL_ARRAY_BUFFER, data.getByteSize(), data, GL_STATIC_DRAW));
 }
 
 void VertexBuffer::bind()

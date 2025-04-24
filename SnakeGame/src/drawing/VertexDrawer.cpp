@@ -8,14 +8,14 @@ VertexDrawer::VertexDrawer(VertexDrawer&& other) noexcept
 VertexDrawer::VertexDrawer(ShaderProgram& program, VertexBuffer& vertexBuffer, VertexArrayBuffer& vertexArrayBuffer)
 	: program(std::move(program)), vertexBuffer(vertexBuffer), vertexArrayBuffer(vertexArrayBuffer) { }
 
-void VertexDrawer::setVertices(GLfloat* vertices, GLuint size)
+void VertexDrawer::setVertices(Array<GLfloat>& vertices)
 {
-	vertexBuffer.setData(vertices, size);
+	vertexBuffer.setData(vertices);
 }
 
-void VertexDrawer::setIndices(GLuint* indices, GLuint size)
+void VertexDrawer::setIndices(Array<GLuint>& indices)
 {
-	vertexArrayBuffer.setData(indices, size);
+	vertexArrayBuffer.setData(indices);
 }
 
 void VertexDrawer::draw()

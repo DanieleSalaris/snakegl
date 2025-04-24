@@ -1,6 +1,7 @@
 #pragma once
 #include <GL/glew.h>
 #include <memory>
+#include "../utility/Array.h"
 
 class VertexBuffer
 {
@@ -8,9 +9,10 @@ private:
 	GLuint id;
 
 public:
-	VertexBuffer(GLfloat* data, unsigned int size);
+	VertexBuffer();
+	VertexBuffer(Array<GLfloat>& data);
 	~VertexBuffer();
-	void setData(GLfloat* data, unsigned int size);
+	void setData(Array<GLfloat>& data);
 	void bind();
 	void unbind();
 };

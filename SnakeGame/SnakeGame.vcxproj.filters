@@ -86,5 +86,8 @@
     <ClInclude Include="src\drawing\VertexArrayBuffer.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="src\utility\Array.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

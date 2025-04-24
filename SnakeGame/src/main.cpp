@@ -8,6 +8,7 @@
 #include <memory>
 
 #include "utility/utility.h"
+#include "utility/Array.h"
 #include "drawing/VertexDrawer.h"
 
 
@@ -21,17 +22,10 @@ VertexDrawer createVertexDrawer() {
 		program.AddShader("res/shaders/fragment.shader", GL_FRAGMENT_SHADER);
 		program.Link();
 		
-		std::vector<int> v { 1, 2, 3 };
-		std::vector<int> v2 = std::move(v);
-
-		
-		VertexBuffer vertexBuffer({}, 0);
-		VertexArrayBuffer vertexArrayBuffer({}, 0);
-
-		vertexArrayBuffer.getLength();
+		VertexBuffer vertexBuffer;
+		VertexArrayBuffer vertexArrayBuffer;
 
 		return VertexDrawer(program, vertexBuffer, vertexArrayBuffer);
-
 }
 
 int main(void)
@@ -64,7 +58,7 @@ int main(void)
 		glGenVertexArrays(1, &vertexArrayId);
 		glBindVertexArray(vertexArrayId);
 
-		static GLfloat g_vertex_buffer_data[] {
+		Array<GLfloat> g_vertex_buffer_data {
 			-0.9f, 0.9f, 0.0f,
 			-0.8f, 0.9f, 0.0f,
 			-0.9f, 0.8f, 0.0f,
@@ -76,7 +70,7 @@ int main(void)
 			 0.4f, 0.8f, 0.0f,
 		};
 
-		unsigned int indices[] = {
+		Array<GLuint> indices {
 			0, 1, 2,
 			1, 2, 3,
 
@@ -85,8 +79,8 @@ int main(void)
 		};
 
 		VertexDrawer vertexDrawer = createVertexDrawer();
-		vertexDrawer.setVertices(g_vertex_buffer_data, sizeof(g_vertex_buffer_data));
-		vertexDrawer.setIndices(indices, sizeof(indices));
+		vertexDrawer.setVertices(g_vertex_buffer_data);
+		vertexDrawer.setIndices(indices);
 
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))

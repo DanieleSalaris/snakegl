@@ -152,6 +152,7 @@
     <ClCompile Include="src\drawing\VertexArrayBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\utility\Array.h" />
     <ClInclude Include="src\snake\Random.h" />
     <ClInclude Include="src\snake\Board.h" />
     <ClInclude Include="src\snake\Position.h" />

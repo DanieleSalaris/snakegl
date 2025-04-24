@@ -1,10 +1,14 @@
 #include "VertexArrayBuffer.h"
 #include "../utility/utility.h"
 
-VertexArrayBuffer::VertexArrayBuffer(GLuint* data, unsigned int size)
+VertexArrayBuffer::VertexArrayBuffer(): length(0)
 {
 	GLCall(glGenBuffers(1, &id));
-	setData(data, size);
+}
+
+VertexArrayBuffer::VertexArrayBuffer(Array<GLuint>& data): VertexArrayBuffer()
+{
+	setData(data);
 }
 
 VertexArrayBuffer::~VertexArrayBuffer()
@@ -12,11 +16,11 @@ VertexArrayBuffer::~VertexArrayBuffer()
 	GLCall(glDeleteBuffers(1, &id));
 }
 
-void VertexArrayBuffer::setData(GLuint* data, unsigned int size)
+void VertexArrayBuffer::setData(Array<GLuint>& data)
 {
 	bind();
-	length = size / sizeof(GLuint);
-	GLCall(glBufferData(GL_ELEMENT_ARRAY_BUFFER, size, data, GL_DYNAMIC_DRAW));
+	length = data.getSize();
+	GLCall(glBufferData(GL_ELEMENT_ARRAY_BUFFER, data.getByteSize(), data, GL_DYNAMIC_DRAW));
 }
 
 void VertexArrayBuffer::bind()
