@@ -10,8 +10,8 @@ Shader::Shader(const std::string filePath, GLenum type, GLuint programId) :
 Shader::Shader(Shader&& o) noexcept
 {
     id = o.id;
-    type = o.id;
-    programId = o.id;
+    type = o.type;
+    programId = o.programId;
     o.id = 0;
 }
 

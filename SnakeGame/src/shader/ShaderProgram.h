@@ -11,6 +11,8 @@ private:
     std::vector<Shader> shaders;
 public:
     ShaderProgram();
+    ShaderProgram(ShaderProgram &&other) noexcept;
+    ~ShaderProgram();
     void AddShader(std::string filePath, GLenum type);
     void Link();
     void Bind();

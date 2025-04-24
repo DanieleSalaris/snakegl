@@ -15,6 +15,7 @@ VertexArrayBuffer::~VertexArrayBuffer()
 void VertexArrayBuffer::setData(GLuint* data, unsigned int size)
 {
 	bind();
+	length = size / sizeof(GLuint);
 	GLCall(glBufferData(GL_ELEMENT_ARRAY_BUFFER, size, data, GL_DYNAMIC_DRAW));
 }
 
@@ -27,3 +28,4 @@ void VertexArrayBuffer::unbind()
 {
 	GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
 }
+
