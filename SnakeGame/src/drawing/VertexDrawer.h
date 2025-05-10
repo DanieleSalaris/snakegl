@@ -4,6 +4,7 @@
 #include "VertexArrayBuffer.h"
 #include "../shader/ShaderProgram.h"
 #include "../utility/Array.h"
+#include "Drawing.h"
 
 class VertexDrawer
 {
@@ -17,6 +18,7 @@ public:
 	VertexDrawer(ShaderProgram& program, VertexBuffer& vertexBuffer, VertexArrayBuffer& vertexArrayBuffer);
 	void setVertices(Array<GLfloat>& vertices);
 	void setIndices(Array<GLuint>& indices);
+	void setPositions(Positions& positions);
 	void draw();
 };
 

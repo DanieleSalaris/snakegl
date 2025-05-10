@@ -138,6 +138,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\drawing\GridVertexMapper.cpp" />
     <ClCompile Include="src\snake\Random.cpp" />
     <ClCompile Include="src\snake\Board.cpp" />
     <ClCompile Include="src\snake\Position.cpp" />
@@ -152,6 +153,8 @@
     <ClCompile Include="src\drawing\VertexArrayBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\drawing\Drawing.h" />
+    <ClInclude Include="src\drawing\GridVertexMapper.h" />
     <ClInclude Include="src\utility\Array.h" />
     <ClInclude Include="src\snake\Random.h" />
     <ClInclude Include="src\snake\Board.h" />

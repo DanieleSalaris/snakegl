@@ -10,6 +10,7 @@
 #include "utility/utility.h"
 #include "utility/Array.h"
 #include "drawing/VertexDrawer.h"
+#include "drawing/GridVertexMapper.h"
 
 
 VertexDrawer createVertexDrawer() {
@@ -78,9 +79,23 @@ int main(void)
 			5, 6, 7
 		};
 
+
+		GridVertexMapper mapper(32, 24);
+
+		Positions cell1 = mapper.getCellPosition(1, 2);
+		Positions cell2 = mapper.getCellPosition(12, 7);
+		Positions cell3 = mapper.getCellPosition(3, 17);
+		Positions positions = cell2 + cell1 + cell3;
+
+		std::cout << positions.vertices.toString() << std::endl;
+		std::cout << positions.indices.toString() << std::endl;
+
+
 		VertexDrawer vertexDrawer = createVertexDrawer();
-		vertexDrawer.setVertices(g_vertex_buffer_data);
-		vertexDrawer.setIndices(indices);
+		// vertexDrawer.setVertices(g_vertex_buffer_data);
+		// vertexDrawer.setIndices(indices);
+
+		vertexDrawer.setPositions(positions);
 
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))

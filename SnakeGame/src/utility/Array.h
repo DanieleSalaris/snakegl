@@ -1,5 +1,7 @@
 #pragma once
 #include <initializer_list>
+#include <string>
+#include <sstream>
 
 template<typename T>
 class Array
@@ -12,6 +14,9 @@ public:
 	Array(T* array, unsigned int size) : size(size)
 	{
 		init(array, size);
+	}
+	Array(unsigned int size) : size(size) {
+		array = new T[size];
 	}
 
 	Array(Array& other): Array(other.array, other.size) { }
@@ -50,6 +55,18 @@ public:
 		other.size = 0;
 	}
 
+	Array operator+(Array& other) {
+		Array result(size + other.size);
+		unsigned int i;
+		for (i = 0; i < size; i++) {
+			result.array[i] = array[i];
+		}
+		for (int j = 0; j < other.size; j++, i++) {
+			result.array[i] = other.array[j];
+		}
+		return result;
+	}
+
 	~Array()
 	{
 		delete[] array;
@@ -64,6 +81,21 @@ public:
 
 	inline unsigned int getSize() { return size; }
 	inline unsigned int getByteSize() { return sizeof(T) * size; }
+
+	std::string toString() {
+		if (size == 0) {
+			return "{ }";
+		}
+		std::stringstream ss;
+		ss << "{ ";
+		int end = size - 1;
+		int i;
+		for (i = 0; i < end; i++) {
+			ss << array[i] << ", ";
+		}
+		ss << array[i] << " }";
+		return ss.str();
+	}
 
 private:
 	void init(T* array, unsigned int size)
