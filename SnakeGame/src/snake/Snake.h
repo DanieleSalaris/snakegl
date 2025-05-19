@@ -10,6 +10,10 @@ enum Direction {
 };
 class Snake
 {
+public:
+	const Direction DEFAULT_DIRECTION = Direction::RIGHT;
+	const Position DEFAULT_POSITION = Position(1, 1);
+	const int DEFAULT_SIZE = 2;
 private:
 	Direction direction;
 	std::vector<Entity> body;
@@ -18,14 +22,21 @@ private:
 	Position GetTranslation(Direction direction);
 public:
 	Snake();
-	Snake(Direction direction, Position position, int size);
+	Snake(const Snake& other);
+	Snake(Direction direction, Position position, int size);	
+	Snake(Direction direction, Position position);
+	Snake(Direction direction);
+	Snake(Position position);
+	Snake& operator=(const Snake&);
 	void Move();
 	void Grow();
 	bool CheckCollision(Position position);
 	bool CheckHeadCollision(Position position);
 	bool CheckBoundaryCollision(Position topLeft, Position bottomRight);
 	bool CheckBodyCollision();
-	inline void SetDirection(Direction);
-	inline Position GetPosition();
+	void SetDirection(Direction);
+	Position GetPosition();
+	int inline GetSize() { return body.size(); }
+	Direction inline GetDirection() const { return direction; } 
 };
 

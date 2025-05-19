@@ -10,6 +10,6 @@ public:
 	
 	Position operator+ (Position& o);
 	Position& operator+= (const Position& o);
-	bool operator==(Position& o);
+	bool operator==(const Position& o) const;
 };
 

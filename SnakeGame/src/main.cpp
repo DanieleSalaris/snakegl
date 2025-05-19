@@ -87,10 +87,6 @@ int main(void)
 		Positions cell3 = mapper.getCellPosition(3, 17);
 		Positions positions = cell2 + cell1 + cell3;
 
-		std::cout << positions.vertices.toString() << std::endl;
-		std::cout << positions.indices.toString() << std::endl;
-
-
 		VertexDrawer vertexDrawer = createVertexDrawer();
 		// vertexDrawer.setVertices(g_vertex_buffer_data);
 		// vertexDrawer.setIndices(indices);

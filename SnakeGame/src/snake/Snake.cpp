@@ -12,6 +12,8 @@ bool Snake::IsValidDirection(Direction direction)
 			return direction != Direction::RIGHT;
 		case Direction::RIGHT:
 			return direction != Direction::LEFT;
+		default:
+			return false;
 	}
 }
 
@@ -26,10 +28,14 @@ Position Snake::GetTranslation(Direction direction)
 			return Position(-1, 0);
 		case Direction::RIGHT:
 			return Position(1, 0);
+		default:
+			return Position(0, 0);
 	}
 }
 
-Snake::Snake() : Snake(Direction::RIGHT, Position(0, 0), 2) { }
+Snake::Snake() : Snake(DEFAULT_DIRECTION,DEFAULT_POSITION, DEFAULT_SIZE) { }
+
+Snake::Snake(const Snake& other) : direction(other.direction), body(other.body) {}
 
 Snake::Snake(Direction direction, Position position, int size) : direction(direction)
 {
@@ -39,6 +45,19 @@ Snake::Snake(Direction direction, Position position, int size) : direction(direc
 	for (int i = 1; i < size; i++) {
 		Grow();
 	}
+}
+
+Snake::Snake(Direction direction, Position position) : Snake(direction, position, DEFAULT_SIZE) { }
+
+Snake::Snake(Direction direction) : Snake(direction, DEFAULT_POSITION, DEFAULT_SIZE) { } 
+
+Snake::Snake(Position position) : Snake(DEFAULT_DIRECTION, position, DEFAULT_SIZE) { }
+
+Snake& Snake::operator=(const Snake& other)
+{
+	direction = other.direction;
+	body = other.body;
+	return *this;
 }
 
 void Snake::Move()
@@ -88,12 +107,12 @@ bool Snake::CheckBodyCollision()
 	return false;
 }
 
-inline void Snake::SetDirection(Direction direction)
+void Snake::SetDirection(Direction direction)
 {
 	if (IsValidDirection(direction)) this->direction = direction;
 }
 
-inline Position Snake::GetPosition()
+Position Snake::GetPosition()
 {
 	return body[0].position;
 }

@@ -19,6 +19,6 @@ Position& Position::operator+=(const Position& o) {
     return *this;
 }
 
-bool Position::operator==(Position& o) {
+bool Position::operator==(const Position& o) const {
     return x == o.x && y == o.y;
 }
