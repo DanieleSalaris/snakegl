@@ -62,8 +62,11 @@ Snake& Snake::operator=(const Snake& other)
 
 void Snake::Move()
 {
-	Position nextPosition = body[0].position += GetTranslation(direction);
-	for (Entity entity : body) {
+	Position nextPosition = body[0].position;
+	body[0].position += GetTranslation(direction);
+	int size = body.size();
+	for (int i = 1; i < size; i++) {
+		Entity& entity = body[i];
 		Position currentPosition = entity.position;
 		entity.position = nextPosition;
 		nextPosition = currentPosition;
@@ -77,7 +80,7 @@ void Snake::Grow()
 
 bool Snake::CheckCollision(Position position)
 {
-	for (Entity e : body)
+	for (Entity& e : body)
 	{
 		if (e.position == position) return true;
 	}

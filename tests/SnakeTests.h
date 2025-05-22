@@ -9,5 +9,16 @@ public:
 	void SetUp() override {
 		snake = Snake();
 	}
+
+	void Move(Direction direction) {
+		snake.SetDirection(direction);
+		snake.Move();
+	}
+
+	void MoveAndGrow(Direction direction) {
+		snake.SetDirection(direction);
+		snake.Grow();
+		snake.Move();
+	}
 };
 
