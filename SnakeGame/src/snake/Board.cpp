@@ -7,23 +7,23 @@ bool Board::CheckCollisions()
 
 bool Board::CheckBoundaryCollision()
 {
-    return snake.CheckBoundaryCollision(Position(0, 0), Position(rows-1, columns-1));
+    return snake->CheckBoundaryCollision(Position(0, 0), Position(rows-1, columns-1));
 }
 
 bool Board::CheckSnakeCollision()
 {
-    return snake.CheckBodyCollision();
+    return snake->CheckBodyCollision();
 }
 
 bool Board::CheckFoodCollision()
 {
-    return snake.CheckHeadCollision(food.position);
+    return snake->CheckHeadCollision(food.position);
 }
 
 void Board::GenerateFood()
 {
-    Position position(random.Next() % rows, random.Next() % columns);
-    if (snake.CheckCollision(position))
+    Position position(random->Next() % rows, random->Next() % columns);
+    if (snake->CheckCollision(position))
         position = FindFirstFreePosition(position);
     food.position = position;
 }
@@ -37,7 +37,7 @@ Position Board::FindFirstFreePosition(Position startingPosition)
         {
             result.x = i;
             result.y = j;
-            if (!snake.CheckCollision(result))
+            if (!snake->CheckCollision(result))
             {
                 return result;
             }
@@ -49,7 +49,7 @@ Position Board::FindFirstFreePosition(Position startingPosition)
         {
             result.x = i;
             result.y = j;
-            if (!snake.CheckCollision(result))
+            if (!snake->CheckCollision(result))
             {
                 return result;
             }
@@ -58,9 +58,9 @@ Position Board::FindFirstFreePosition(Position startingPosition)
     return result;
 }
 
-Board::Board() : Board(10, 10) { }
+Board::Board(Random* random, SnakeFactory* snakeFactory) : Board(random, snakeFactory, 10, 10) { }
 
-Board::Board(int rows, int columns) {
+Board::Board(Random* random, SnakeFactory* snakeFactory, int rows, int columns): random(random), snakeFactory(snakeFactory) {
     if (rows < 2) rows = 2;
     if (columns < 2) columns = 2;
     this->rows = rows;
@@ -70,7 +70,7 @@ Board::Board(int rows, int columns) {
 
 void Board::Init()
 {
-    snake = Snake(Direction::RIGHT, Position(1, 1), 2);
+    snake.reset(snakeFactory->Create(Direction::RIGHT, Position(1, 1), 2));
     GenerateFood();
     gameRunning = true;
 }
@@ -88,10 +88,15 @@ void Board::NextStep()
         return;
     }
 
-    snake.Move();
+    snake->Move();
     if (CheckFoodCollision())
     {
-        snake.Grow();
+        snake->Grow();
         GenerateFood();
     }
+}
+
+void Board::SetSnakeDirection(Direction direction)
+{
+    snake->SetDirection(direction);
 }

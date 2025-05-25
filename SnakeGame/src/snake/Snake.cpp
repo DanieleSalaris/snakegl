@@ -1,5 +1,6 @@
 #include "Snake.h"
 
+const Position Snake::DEFAULT_POSITION = Position(1, 1);
 bool Snake::IsValidDirection(Direction direction)
 {
 	switch(this->direction) 
@@ -33,7 +34,7 @@ Position Snake::GetTranslation(Direction direction)
 	}
 }
 
-Snake::Snake() : Snake(DEFAULT_DIRECTION,DEFAULT_POSITION, DEFAULT_SIZE) { }
+Snake::Snake() : Snake(Snake::DEFAULT_DIRECTION,Snake::DEFAULT_POSITION, Snake::DEFAULT_SIZE) { }
 
 Snake::Snake(const Snake& other) : direction(other.direction), body(other.body) {}
 
@@ -47,11 +48,16 @@ Snake::Snake(Direction direction, Position position, int size) : direction(direc
 	}
 }
 
-Snake::Snake(Direction direction, Position position) : Snake(direction, position, DEFAULT_SIZE) { }
+Snake::Snake(Direction direction, Position position) : Snake(direction, position, Snake::DEFAULT_SIZE) { }
 
-Snake::Snake(Direction direction) : Snake(direction, DEFAULT_POSITION, DEFAULT_SIZE) { } 
+Snake::Snake(Direction direction) : Snake(direction, Snake::DEFAULT_POSITION, DEFAULT_SIZE) { } 
 
-Snake::Snake(Position position) : Snake(DEFAULT_DIRECTION, position, DEFAULT_SIZE) { }
+Snake::Snake(Position position) : Snake(Snake::DEFAULT_DIRECTION, position, Snake::DEFAULT_SIZE) { }
+
+Snake::Snake(Snake&& other) {
+	direction = other.direction;
+	body = std::move(body);
+}
 
 Snake& Snake::operator=(const Snake& other)
 {

@@ -2,14 +2,14 @@
 #include <ctime>
 #include <cstdlib>
 
-Random::Random() : Random(std::time({})) {}
+RandomImpl::RandomImpl() : RandomImpl(std::time({})) {}
 
-Random::Random(int seed)
+RandomImpl::RandomImpl(int seed)
 {
     std::srand(seed);
 }
 
-int Random::Next()
+int RandomImpl::Next()
 {
     return std::rand();
 }

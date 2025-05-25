@@ -2,8 +2,13 @@
 class Random
 {
 public:
-	Random();
-	Random(int seed);
-	int Next();
+	virtual int Next() = 0;
+};
+
+class RandomImpl : public Random {
+public:
+	RandomImpl();
+	RandomImpl(int seed);
+	int Next() override;
 };
 

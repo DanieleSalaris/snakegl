@@ -54,6 +54,9 @@
     <ClCompile Include="src\drawing\GridVertexMapper.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
+    <ClCompile Include="src\snake\SnakeFactory.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\utility\utility.h">
@@ -96,6 +99,9 @@
       <Filter>File di intestazione</Filter>
     </ClInclude>
     <ClInclude Include="src\drawing\GridVertexMapper.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="src\snake\SnakeFactory.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
   </ItemGroup>

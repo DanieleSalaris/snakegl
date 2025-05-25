@@ -2,6 +2,8 @@
 #include "Snake.h"
 #include "Entity.h"
 #include "Random.h"
+#include "SnakeFactory.h"
+#include <memory>
 
 class Board
 {
@@ -10,8 +12,9 @@ private:
 	int columns;
 	bool gameRunning;
 	Entity food;
-	Snake snake;
-	Random random;
+	std::unique_ptr<Snake> snake;
+	std::unique_ptr<Random> random;
+	std::unique_ptr<SnakeFactory> snakeFactory;
 
 	bool CheckCollisions();
 	bool CheckBoundaryCollision();
@@ -23,10 +26,11 @@ private:
 	
 
 public:
-	Board();
-	Board(int rows, int cols);
+	Board(Random* random, SnakeFactory* snakeFactory);
+	Board(Random* random, SnakeFactory* snakeFactory, int rows, int cols);
 
 	void Init();
 	void NextStep();
+	void SetSnakeDirection(Direction direction);
 };
 

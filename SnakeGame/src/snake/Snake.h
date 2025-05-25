@@ -11,9 +11,9 @@ enum Direction {
 class Snake
 {
 public:
-	const Direction DEFAULT_DIRECTION = Direction::RIGHT;
-	const Position DEFAULT_POSITION = Position(1, 1);
-	const int DEFAULT_SIZE = 2;
+	static const Direction DEFAULT_DIRECTION = Direction::RIGHT;
+	static const int DEFAULT_SIZE = 2;
+	static const Position DEFAULT_POSITION;
 private:
 	Direction direction;
 	std::vector<Entity> body;
@@ -27,6 +27,7 @@ public:
 	Snake(Direction direction, Position position);
 	Snake(Direction direction);
 	Snake(Position position);
+	Snake(Snake&& other);
 	Snake& operator=(const Snake&);
 	void Move();
 	void Grow();
