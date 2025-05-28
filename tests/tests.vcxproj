@@ -46,7 +46,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>..\SnakeGame\Debug\Position.obj;..\SnakeGame\Debug\Snake.obj;..\SnakeGame\Debug\Entity.obj;..\SnakeGame\Debug\Board.obj;..\SnakeGame\Debug\SnakeFactory.obj;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\SnakeGame\Debug\Position.obj;..\SnakeGame\Debug\Snake.obj;..\SnakeGame\Debug\Entity.obj;..\SnakeGame\Debug\Board.obj;..\SnakeGame\Debug\SnakeFactory.obj;..\SnakeGame\Debug\SnakePositionsSerializer.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -78,7 +78,7 @@
       <SubSystem>Console</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <AdditionalDependencies>..\SnakeGame\Debug\Position.obj;..\SnakeGame\Debug\Snake.obj;..\SnakeGame\Debug\Entity.obj;..\SnakeGame\Debug\Board.obj;..\SnakeGame\Debug\SnakeFactory.obj;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\SnakeGame\Debug\Position.obj;..\SnakeGame\Debug\Snake.obj;..\SnakeGame\Debug\Entity.obj;..\SnakeGame\Debug\Board.obj;..\SnakeGame\Debug\SnakeFactory.obj;..\SnakeGame\Debug\SnakePositionsSerializer.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -101,11 +101,13 @@
     <ClInclude Include="BoardTests.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PositionTests.h" />
+    <ClInclude Include="SnakePositionsSerializerTests.h" />
     <ClInclude Include="SnakeTests.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BoardTests.cpp" />
     <ClCompile Include="PositionTests.cpp" />
+    <ClCompile Include="SnakePositionsSerializerTests.cpp" />
     <ClCompile Include="SnakeTests.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="pch.cpp">

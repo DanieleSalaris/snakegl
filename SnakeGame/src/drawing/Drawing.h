@@ -7,7 +7,7 @@ public:
 	Array<GLfloat> vertices;
 	Array<GLuint> indices;
 
-	Positions operator+(Positions& other) {
+	Positions operator+(const Positions& other) {
 		Positions result{
 			vertices + other.vertices,
 			indices + other.indices

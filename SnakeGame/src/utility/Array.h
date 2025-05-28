@@ -55,7 +55,7 @@ public:
 		other.size = 0;
 	}
 
-	Array operator+(Array& other) {
+	Array operator+(const Array& other) {
 		Array result(size + other.size);
 		unsigned int i;
 		for (i = 0; i < size; i++) {

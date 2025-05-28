@@ -138,6 +138,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\drawing\SnakeGridVertexSerializer.cpp" />
+    <ClCompile Include="src\snake\SnakePositionsSerializer.cpp" />
     <ClCompile Include="src\snake\SnakeFactory.cpp" />
     <ClCompile Include="src\drawing\GridVertexMapper.cpp" />
     <ClCompile Include="src\snake\Random.cpp" />
@@ -154,6 +156,8 @@
     <ClCompile Include="src\drawing\VertexArrayBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\drawing\SnakeGridVertexSerializer.h" />
+    <ClInclude Include="src\snake\SnakePositionsSerializer.h" />
     <ClInclude Include="src\snake\SnakeFactory.h" />
     <ClInclude Include="src\drawing\Drawing.h" />
     <ClInclude Include="src\drawing\GridVertexMapper.h" />

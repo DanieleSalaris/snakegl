@@ -2,6 +2,7 @@
 #include <vector>
 #include "Entity.h"
 
+class SnakePositionsSerializer;
 enum Direction {
 	UP,
 	DOWN,
@@ -39,5 +40,6 @@ public:
 	Position GetPosition();
 	int inline GetSize() { return body.size(); }
 	Direction inline GetDirection() const { return direction; } 
+	friend SnakePositionsSerializer;
 };
 
