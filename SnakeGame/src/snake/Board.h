@@ -32,5 +32,9 @@ public:
 	void Init();
 	void NextStep();
 	void SetSnakeDirection(Direction direction);
+	const inline Snake& GetSnake() { return *snake; }
+	inline const Position GetFoodPosition() const { return food.position; }
+	inline int GetRows() const { return rows; }
+	inline int GetColumns() const { return columns; }
 };
 

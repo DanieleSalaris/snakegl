@@ -4,7 +4,7 @@ GridVertexMapper::GridVertexMapper() : GridVertexMapper(1, 1) {}
 
 GridVertexMapper::GridVertexMapper(int rows, int columns): rows(rows), columns(columns) { }
 
-Positions GridVertexMapper::getCellPosition(int row, int column) {
+Positions GridVertexMapper::getCellPosition(int row, int column) const {
 	float rowUnit = 2.0f / rows;
 	float columnUnit = 2.0f / columns;
 	float rowStart = (rowUnit * row) - 1;

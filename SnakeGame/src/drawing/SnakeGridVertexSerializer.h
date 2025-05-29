@@ -5,12 +5,12 @@
 class SnakePositionToGridVertexSerializer: public SnakePositionsSerializer 
 {
 private:
-	GridVertexMapper* gridVertexMapper;
+	const GridVertexMapper* gridVertexMapper;
 	Positions positions;
 public:
-	SnakePositionToGridVertexSerializer(GridVertexMapper* gridVertexMapper, Snake* snake);
+	SnakePositionToGridVertexSerializer(const GridVertexMapper* gridVertexMapper, const Snake* snake);
 	void ConsumePosition(Position& position) override;
 	void Serialize() override;
-
+    inline const Positions& getPositions() const { return positions; }
 };
 

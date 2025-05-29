@@ -13,5 +13,5 @@ private:
 public:
 	GridVertexMapper();
 	GridVertexMapper(int rows, int columns);
-	Positions getCellPosition(int row, int column);
+	Positions getCellPosition(int row, int column) const;
 };

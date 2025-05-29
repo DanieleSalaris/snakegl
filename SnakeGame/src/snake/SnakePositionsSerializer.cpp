@@ -1,6 +1,6 @@
 #include "SnakePositionsSerializer.h"
 
-SnakePositionsSerializer::SnakePositionsSerializer(Snake* snake): snake(snake) {}
+SnakePositionsSerializer::SnakePositionsSerializer(const Snake* snake): snake(snake) {}
 
 void SnakePositionsSerializer::Serialize()
 {

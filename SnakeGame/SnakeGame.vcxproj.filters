@@ -63,6 +63,9 @@
     <ClCompile Include="src\drawing\SnakeGridVertexSerializer.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
+    <ClCompile Include="src\drawing\BoardGridVertexMapper.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\utility\utility.h">
@@ -114,6 +117,9 @@
       <Filter>File di intestazione</Filter>
     </ClInclude>
     <ClInclude Include="src\drawing\SnakeGridVertexSerializer.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="src\drawing\BoardGridVertexMapper.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,6 +1,6 @@
 #include "SnakeGridVertexSerializer.h"
 
-SnakePositionToGridVertexSerializer::SnakePositionToGridVertexSerializer(GridVertexMapper* gridVertexMapper, Snake* snake):
+SnakePositionToGridVertexSerializer::SnakePositionToGridVertexSerializer(const GridVertexMapper* gridVertexMapper, const Snake* snake):
 	SnakePositionsSerializer(snake), gridVertexMapper(gridVertexMapper) {}
 
 void SnakePositionToGridVertexSerializer::ConsumePosition(Position& position)

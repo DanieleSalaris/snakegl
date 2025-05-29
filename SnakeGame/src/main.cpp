@@ -11,6 +11,8 @@
 #include "utility/Array.h"
 #include "drawing/VertexDrawer.h"
 #include "drawing/GridVertexMapper.h"
+#include "drawing/BoardGridVertexMapper.h"
+#include "snake/Board.h"
 
 
 VertexDrawer createVertexDrawer() {
@@ -92,6 +94,12 @@ int main(void)
 		// vertexDrawer.setIndices(indices);
 
 		vertexDrawer.setPositions(positions);
+
+		
+		Board board(new RandomImpl(), new SnakeFactoryImpl());
+		GridVertexMapper gridVertexMapper;
+		SnakePositionToGridVertexSerializer snakeSerializer(&gridVertexMapper, &board.GetSnake());
+		BoardGridVertexMapper boardGridVertexMapper(&board, &snakeSerializer);
 
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
