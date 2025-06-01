@@ -3,7 +3,7 @@
 BoardGridVertexMapper::BoardGridVertexMapper(Board* board, SnakePositionToGridVertexSerializer* snakeSerializer) :
     board(board), snakeSerializer(snakeSerializer)
 {
-    gridVertexMapper = new GridVertexMapper(board->GetFoodPosition().x, board->GetFoodPosition().y);
+    gridVertexMapper = new GridVertexMapper(board->GetRows(), board->GetColumns());
 }
 
 Positions BoardGridVertexMapper::Serialize()
@@ -13,6 +13,6 @@ Positions BoardGridVertexMapper::Serialize()
     snakeSerializer->Serialize();
 
     const Positions& snakePositions = snakeSerializer->getPositions();
-    Positions foodPositions = gridVertexMapper->getCellPosition(food.x, food.y);
+    Positions foodPositions = gridVertexMapper->getCellPosition(food.y, food.x);
     return foodPositions + snakePositions;
 }

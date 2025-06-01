@@ -108,7 +108,14 @@ bool Snake::CheckBodyCollision()
 {
 	Position headPosition = body[0].position;
 	int size = body.size();
-	for (int i = 1; i < size; i++)
+	int i;
+	for (i = 1; i < size; i++) {
+		if (headPosition != body[i].position) {
+			i++;
+			break;
+		}
+	}
+	for (i; i < size; i++)
 	{
 		if (headPosition == body[i].position)
 			return true;

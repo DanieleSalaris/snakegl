@@ -22,3 +22,8 @@ Position& Position::operator+=(const Position& o) {
 bool Position::operator==(const Position& o) const {
     return x == o.x && y == o.y;
 }
+
+bool Position::operator!=(const Position& o) const
+{
+    return x != o.x || y != o.y;
+}

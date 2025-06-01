@@ -6,6 +6,8 @@
 #include <fstream>
 #include <sstream>
 #include <memory>
+#include <thread>
+#include <chrono>
 
 #include "utility/utility.h"
 #include "utility/Array.h"
@@ -97,13 +99,17 @@ int main(void)
 
 		
 		Board board(new RandomImpl(), new SnakeFactoryImpl());
-		GridVertexMapper gridVertexMapper;
+		GridVertexMapper gridVertexMapper(board.GetRows(), board.GetColumns());
 		SnakePositionToGridVertexSerializer snakeSerializer(&gridVertexMapper, &board.GetSnake());
 		BoardGridVertexMapper boardGridVertexMapper(&board, &snakeSerializer);
+
+		positions = boardGridVertexMapper.Serialize();
+		vertexDrawer.setPositions(positions);
 
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
         {
+
             /* Render here */
             glClear(GL_COLOR_BUFFER_BIT);
 
@@ -114,6 +120,11 @@ int main(void)
 
             /* Poll for and process events */
             glfwPollEvents();
+
+			std::this_thread::sleep_for(std::chrono::seconds(2));
+			board.NextStep();
+			positions = boardGridVertexMapper.Serialize();
+			vertexDrawer.setPositions(positions);
         }
     }
 

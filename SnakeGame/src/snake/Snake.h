@@ -13,7 +13,7 @@ class Snake
 {
 public:
 	static const Direction DEFAULT_DIRECTION = Direction::RIGHT;
-	static const int DEFAULT_SIZE = 2;
+	static const int DEFAULT_SIZE = 1;
 	static const Position DEFAULT_POSITION;
 private:
 	Direction direction;

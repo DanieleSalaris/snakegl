@@ -5,7 +5,7 @@ SnakePositionToGridVertexSerializer::SnakePositionToGridVertexSerializer(const G
 
 void SnakePositionToGridVertexSerializer::ConsumePosition(Position& position)
 {
-	positions = positions + gridVertexMapper->getCellPosition(position.x, position.y);
+	positions = positions + gridVertexMapper->getCellPosition(position.y, position.x);
 }
 
 void SnakePositionToGridVertexSerializer::Serialize()

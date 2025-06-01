@@ -61,7 +61,7 @@ public:
 		for (i = 0; i < size; i++) {
 			result.array[i] = array[i];
 		}
-		for (int j = 0; j < other.size; j++, i++) {
+		for (unsigned int j = 0; j < other.size; j++, i++) {
 			result.array[i] = other.array[j];
 		}
 		return result;

@@ -58,7 +58,7 @@ Position Board::FindFirstFreePosition(Position startingPosition)
     return result;
 }
 
-Board::Board(Random* random, SnakeFactory* snakeFactory) : Board(random, snakeFactory, 10, 10) { }
+Board::Board(Random* random, SnakeFactory* snakeFactory) : Board(random, snakeFactory, 32, 32) { }
 
 Board::Board(Random* random, SnakeFactory* snakeFactory, int rows, int columns): random(random), snakeFactory(snakeFactory) {
     if (rows < 2) rows = 2;
@@ -70,7 +70,7 @@ Board::Board(Random* random, SnakeFactory* snakeFactory, int rows, int columns):
 
 void Board::Init()
 {
-    snake.reset(snakeFactory->Create(Direction::RIGHT, Position(1, 1), 2));
+    snake.reset(snakeFactory->Create(Direction::RIGHT, Position(1, 1), 5));
     GenerateFood();
     gameRunning = true;
 }

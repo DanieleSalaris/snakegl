@@ -170,3 +170,8 @@ TEST_F(SnakeTests, CheckCollisionFalseForPositionsOutsideBody) {
     EXPECT_FALSE(snake.CheckCollision(Position(9, -1)));
 }
 
+TEST_F(SnakeTests, CheckBodyCollisionShouldReturnFalseAfterCreation) {
+    snake = Snake(Direction::RIGHT, Position(1, 1), 3);
+    EXPECT_FALSE(snake.CheckBodyCollision());
+}
+
