@@ -138,6 +138,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\GameLoop.cpp" />
     <ClCompile Include="src\drawing\BoardGridVertexMapper.cpp" />
     <ClCompile Include="src\drawing\SnakeGridVertexSerializer.cpp" />
     <ClCompile Include="src\snake\SnakePositionsSerializer.cpp" />
@@ -157,6 +158,7 @@
     <ClCompile Include="src\drawing\VertexArrayBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GameLoop.h" />
     <ClInclude Include="src\drawing\BoardGridVertexMapper.h" />
     <ClInclude Include="src\drawing\SnakeGridVertexSerializer.h" />
     <ClInclude Include="src\snake\SnakePositionsSerializer.h" />

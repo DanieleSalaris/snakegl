@@ -19,7 +19,7 @@ public:
 		array = new T[size];
 	}
 
-	Array(Array& other): Array(other.array, other.size) { }
+	Array(const Array& other): Array(other.array, other.size) { }
 
 	Array(Array&& other)
 	{
@@ -40,7 +40,7 @@ public:
 		}
 	}
 
-	void operator=(Array& other)
+	void operator=(const Array& other)
 	{
 		clear();
 		init(other.array, other.size);
@@ -100,6 +100,7 @@ public:
 private:
 	void init(T* array, unsigned int size)
 	{
+		this->size = size;
 		this->array = new T[size];
 		for (int i = 0; i < size; i++) {
 			this->array[i] = array[i];

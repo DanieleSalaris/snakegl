@@ -15,6 +15,7 @@
 #include "drawing/GridVertexMapper.h"
 #include "drawing/BoardGridVertexMapper.h"
 #include "snake/Board.h"
+#include "GameLoop.h"
 
 
 VertexDrawer createVertexDrawer() {
@@ -96,15 +97,18 @@ int main(void)
 		// vertexDrawer.setIndices(indices);
 
 		vertexDrawer.setPositions(positions);
+		GameLoop gameLoop;
 
 		
-		Board board(new RandomImpl(), new SnakeFactoryImpl());
-		GridVertexMapper gridVertexMapper(board.GetRows(), board.GetColumns());
-		SnakePositionToGridVertexSerializer snakeSerializer(&gridVertexMapper, &board.GetSnake());
-		BoardGridVertexMapper boardGridVertexMapper(&board, &snakeSerializer);
+		// Board board(new RandomImpl(), new SnakeFactoryImpl());
+		// GridVertexMapper gridVertexMapper(board.GetRows(), board.GetColumns());
+		// SnakePositionToGridVertexSerializer snakeSerializer(&gridVertexMapper, &board.GetSnake());
+		// BoardGridVertexMapper boardGridVertexMapper(&board, &snakeSerializer);
 
-		positions = boardGridVertexMapper.Serialize();
-		vertexDrawer.setPositions(positions);
+		// positions = boardGridVertexMapper.Serialize();
+		// vertexDrawer.setPositions(positions);
+
+
 
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
@@ -121,9 +125,7 @@ int main(void)
             /* Poll for and process events */
             glfwPollEvents();
 
-			std::this_thread::sleep_for(std::chrono::seconds(2));
-			board.NextStep();
-			positions = boardGridVertexMapper.Serialize();
+			positions = gameLoop.GetPositions();
 			vertexDrawer.setPositions(positions);
         }
     }

@@ -36,5 +36,6 @@ public:
 	inline const Position GetFoodPosition() const { return food.position; }
 	inline int GetRows() const { return rows; }
 	inline int GetColumns() const { return columns; }
+	inline bool isGameRunning() const { return gameRunning; }
 };
 
